@@ -1,7 +1,4 @@
 #!/bin/bash
-# local_cidrs_file_name="ru.cidr.1"
-# local_cidrs_file_name="ru.cidr"
-# local_cidrs_file_name="ru.cidr.1"
 actual_cidrs_file_name="ru.cidr"
 static_cidrs_file_name="ru.cidr.static"
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
@@ -19,8 +16,8 @@ done
 
 if [[ "$del" == "no" ]] ; then
   echo "Trying to get actual cidrs-list"
-  rm -f "/usr/share/vpnc-scripts/$actual_cidrs_file_name"
-  wget "https://github.com/herrbischoff/country-ip-blocks/raw/master/ipv4/ru.cidr" -O "/usr/share/vpnc-scripts/$actual_cidrs_file_name"
+  rm -f "$SCRIPTPATH/$actual_cidrs_file_name"
+  wget "https://github.com/herrbischoff/country-ip-blocks/raw/master/ipv4/ru.cidr" -O "$SCRIPTPATH/$actual_cidrs_file_name"
 fi
 
 if [[ -s "$SCRIPTPATH/$actual_cidrs_file_name" ]]; then
